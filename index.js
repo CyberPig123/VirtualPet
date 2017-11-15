@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   var pet = document.querySelector('.pet')
 
   widthCentre = innerWidth / 2
-  pet.style.transform = 'translateX(' + String(innerWidth / 2 - 80) + 'px) translateY(' + String(innerHeight - 90 - 164) + 'px)'
+  pet.style.transform = 'translateX(' + String(innerWidth / 2 - 80) + 'px) translateY(' + String(innerHeight - 90 - 153.5) + 'px)'
 
   if (localStorage.getItem('petName') === null) {
     localStorage.setItem('petName', 'My Pet')
