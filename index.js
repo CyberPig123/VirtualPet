@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   var editNameLink = document.querySelector('.edit')
   var saveNameLink = document.querySelector('.save')
   var name = document.querySelector('.name')
+  var pet = document.querySelector('.pet')
+
+  widthCentre = innerWidth / 2
+  pet.style.transform = 'translateX(' + String(innerWidth / 2 - 80) + 'px) translateY(' + String(innerHeight - 90 - 164) + 'px)'
 
   if (localStorage.getItem('petName') === null) {
     localStorage.setItem('petName', 'My Pet')

@@ -2,6 +2,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering:    -moz-crisp-edges;
+  image-rendering:         crisp-edges;
+  image-rendering:           pixelated;
 }
 
 html, body {
@@ -27,4 +31,33 @@ html, body {
   color: #089fd6;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.floor {
+  height: 40px;
+  bottom: 80px;
+  position: absolute;
+  background-image: url(images/floor.png);
+  background-size: 50px 40px;
+  width: 100%;
+}
+
+.controls {
+  height: 80px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+  background-color: #ccc;
+}
+
+.pet {
+  position: absolute;
+  background-image: url(images/egg_happy_tr.png);
+  width: 160px;
+  height: 160px;
+  background-size: 160px 160px;
+  background-color: #0f0;
+  transform-origin: center;
+  top: 0;
+  left: 0;
 }
