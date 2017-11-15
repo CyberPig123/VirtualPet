@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.heading, .underHeading {
+  width: 100%;
+  text-align: center;
+  padding-top: 20px;
+  font-family: 'Luckiest Guy', 'Roboto', sans-serif;
+  font-size: 2.6rem;
+}
+
+.underHeading {
+  padding-top: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+}
+
+.underHeading span {
+  color: #089fd6;
+  text-decoration: underline;
+  cursor: pointer;
+}
