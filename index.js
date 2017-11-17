@@ -3,9 +3,11 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   var saveNameLink = document.querySelector('.save')
   var name = document.querySelector('.name')
   var pet = document.querySelector('.pet')
+  var petBack = document.querySelector('.petBack')
 
   widthCentre = innerWidth / 2
-  pet.style.transform = 'translateX(' + String(innerWidth / 2 - 80) + 'px) translateY(' + String(innerHeight - 90 - 153.5) + 'px)'
+  pet.style.transform = 'translateX(' + String(innerWidth / 2 - 80) + 'px) translateY(-90px)'
+  petBack.style.transform = 'translateX(' + String(innerWidth / 2 - 80) + 'px) translateY(-90px)'
 
   if (localStorage.getItem('petName') === null) {
     localStorage.setItem('petName', 'My Pet')

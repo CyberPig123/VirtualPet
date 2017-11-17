@@ -34,11 +34,11 @@ html, body {
 }
 
 .floor {
-  height: 40px;
+  height: 30px;
   bottom: 80px;
   position: absolute;
   background-image: url(images/floor.png);
-  background-size: 50px 40px;
+  background-size: 50px 30px;
   width: 100%;
 }
 
@@ -47,17 +47,26 @@ html, body {
   bottom: 0;
   position: absolute;
   width: 100%;
-  background-color: #ccc;
+  background-color: #16d047;
 }
 
-.pet {
+.pet, .petBack {
   position: absolute;
   background-image: url(images/egg_happy_tr.png);
   width: 160px;
-  height: 160px;
-  background-size: 160px 160px;
-  background-color: #0f0;
+  height: 150px;
+  background-size: 160px 150px;
   transform-origin: center;
-  top: 0;
+  bottom: 0;
   left: 0;
+}
+
+.petBack {
+  background-image: none;
+  background-color: #ffd400;
+  /* this clip-path is very un-neat */
+  clip-path: polygon(70px 20px, 90px 20px, 90px 30px, 110px 30px,
+    110px 40px, 110px 50px, 120px 60px, 120px 80px, 130px 80px, 130px 110px,
+    120px 130px, 100px 140px, 60px 140px, 40px 130px, 40px 110px, 30px 110px,
+    30px 80px, 40px 60px, 50px 40px, 70px 40px, 70px 20px) !important
 }
