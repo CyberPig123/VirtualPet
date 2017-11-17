@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  image-rendering: -webkit-crisp-edges;
   image-rendering:    -moz-crisp-edges;
   image-rendering:         crisp-edges;
   image-rendering:           pixelated;
@@ -11,9 +10,10 @@
 html, body {
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 
-.heading, .underHeading {
+.heading {
   width: 100%;
   text-align: center;
   padding-top: 20px;
@@ -22,12 +22,14 @@ html, body {
 }
 
 .underHeading {
+  width: 100%;
+  text-align: center;
   padding-top: 10px;
-  font-family: 'Roboto', sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 1rem;
 }
 
-.underHeading span {
+span.colour, .underHeading span, .colSave{
   color: #089fd6;
   text-decoration: underline;
   cursor: pointer;
@@ -48,6 +50,7 @@ html, body {
   position: absolute;
   width: 100%;
   background-color: #16d047;
+  z-index: 4
 }
 
 .pet, .petBack {
@@ -64,9 +67,65 @@ html, body {
 .petBack {
   background-image: none;
   background-color: #ffd400;
-  /* this clip-path is very un-neat */
   clip-path: polygon(70px 20px, 90px 20px, 90px 30px, 110px 30px,
-    110px 40px, 110px 50px, 120px 60px, 120px 80px, 130px 80px, 130px 110px,
-    120px 130px, 100px 140px, 60px 140px, 40px 130px, 40px 110px, 30px 110px,
-    30px 80px, 40px 60px, 50px 40px, 70px 40px, 70px 20px) !important
+    110px 40px, 120px 40px, 120px 60px, 130px 60px, 130px 80px,
+    140px 80px, 140px 110px, 130px 110px, 130px 130px, 120px 130px,
+    120px 140px, 100px 140px, 100px 150px, 60px 150px, 60px 140px,
+    40px 140px, 40px 130px, 30px 130px, 30px 110px, 20px 110px,
+    20px 80px, 30px 80px, 30px 60px, 40px 60px, 40px 40px, 50px 40px,
+    50px 30px, 70px 30px, 70px 20px) !important;
+}
+
+span.colour, .petColour .colSave {
+  font-family: Roboto, sans-serif;
+  height: 80px;
+  line-height: 80px;
+  color: #000;
+  margin-left: 20px;
+}
+
+.petColour {
+  position: absolute;
+  height: 80px;
+  width: 100%;
+  bottom: 0;
+  background-color: #39e065;
+  z-index: 2;
+  transition: bottom 0.5s;
+}
+
+.colSave {
+  position: absolute;
+  right: 0;
+  margin-left: 0;
+  margin-right: 20px;
+  position: absolute;
+  display: inline;
+  right: 0;
+  top: 0;
+}
+
+.colPreview {
+  margin: 20px;
+  background-color: #f00;
+  height: 40px;
+  border: 2px solid white;
+  width: 8vw;
+  display: inline;
+  position: absolute;
+}
+
+.colGradient {
+  background-image: linear-gradient(90deg, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+  height: 20px;
+  margin: 15px 160px;
+  border: 2px solid white;
+}
+
+.colSlider {
+  height: 20px;
+  margin: 0 160px;
+  border: 2px solid rgba(0,0,0,0);
+  width: calc(100% - 320px);
+  transform: rotate(180deg);
 }
