@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   petBack.style.transform = 'translateX(' + String(innerWidth / 2 - 80) + 'px) translateY(-85px)'
 
   setTimeout(() => {
-    pet.style.transition = 'transform 3s ease-in-out'
-    petBack.style.transition = 'transform 3s ease-in-out'
+    pet.style.transition = 'transform 2.5s'
+    petBack.style.transition = 'transform 2.5s'
   }, 100)
 
   if (localStorage.getItem('petName') === null) {
