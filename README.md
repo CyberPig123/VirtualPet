@@ -1,5 +1,9 @@
+# VirtualPet
+## By platy11 and CyberPig123
 
-The super-magical, ultra-fun
-# VirtualPet 5000!!
+ - CyberPig123: Design
+ - platy11: Code
 
-*(Batteries not included)*
+![Pet Egg](images/egg_happy_256.png)
+
+(batteries not included)
