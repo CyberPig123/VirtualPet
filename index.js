@@ -57,14 +57,14 @@ document.addEventListener('DOMContentLoaded', (ev) => {
 
   changeColour.addEventListener('click', (ev) => {
     config.canMove = false
-    colPanel.style.bottom = '80px'
+    colPanel.style.bottom = '0'
   })
 
   colSave.addEventListener('click', (ev) => {
     setTimeout(() => {
       config.canMove = true
     }, 500)
-    colPanel.style.bottom = '0'
+    colPanel.style.bottom = '-80px'
     hue = -1 * colSlider.value
     localStorage.setItem('petColour', 'hsl(' + hue + ', 85%, 50%)')
     petBack.style.backgroundColor = 'hsl(' + hue + ', 85%, 50%)'
