@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     localStorage.setItem('petName', 'My Pet')
   }
 
+  document.title = localStorage.getItem('petName') + ' - VirtualPet'
+
   if (localStorage.getItem('petColour') === null) {
     localStorage.setItem('petColour', '#ffd400')
   }
@@ -48,6 +50,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     localStorage.setItem('petName', name.innerText)
     ev.target.style.display = 'none'
     editNameLink.style.display = 'inline'
+    document.title = localStorage.getItem('petName') + ' - VirtualPet'
   })
 
   colSlider.addEventListener('input', (ev) => {
