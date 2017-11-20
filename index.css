@@ -18,7 +18,7 @@ html, body {
   width: 100%;
   text-align: center;
   padding-top: 20px;
-  font-family: 'Luckiest Guy', 'Roboto', sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   font-size: 2.6rem;
 }
 
@@ -26,7 +26,7 @@ html, body {
   width: 100%;
   text-align: center;
   padding-top: 10px;
-  font-family: Roboto, sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   font-size: 1rem;
 }
 
@@ -78,7 +78,7 @@ span.colour, .underHeading span, .colSave{
 }
 
 .petColour .colSave {
-  font-family: Roboto, sans-serif;
+  font-family: 'Luckiest Guy', sans-serif;
   height: 80px;
   line-height: 80px;
   color: #000;
