@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
       heart.style.display = 'none'
       pet.style.backgroundImage = 'url(images/egg_happy_tr.png)'
       heart.setAttribute('class', 'loveHeart')
-    }, 3000)
+    }, 1500)
     heart.style.display = 'block'
     heart.style.left = Number(window.config.petX.replace('px', '')) + 52.5
     heart.style.bottom = '240px'
