@@ -2,9 +2,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  image-rendering:    -moz-crisp-edges;
-  image-rendering:         crisp-edges;
-  image-rendering:           pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering:      crisp-edges;
+  image-rendering:        pixelated;
 }
 
 html, body {
@@ -30,10 +30,11 @@ html, body {
   font-size: 1rem;
 }
 
-span.colour, .underHeading span, .colSave{
-  color: #089fd6;
+button.colour, .underHeading span, .colSave{
+  color: #000;
   text-decoration: underline;
   cursor: pointer;
+  font-size: 16px;
 }
 
 .floor {
@@ -63,11 +64,6 @@ span.colour, .underHeading span, .colSave{
   transform-origin: center;
   bottom: 0;
   left: 0;
-}
-
-.petBack {
-  background-image: none;
-  background-color: #ffd400;
   clip-path: polygon(70px 20px, 90px 20px, 90px 30px, 110px 30px,
     110px 40px, 120px 40px, 120px 60px, 130px 60px, 130px 80px,
     140px 80px, 140px 110px, 130px 110px, 130px 130px, 120px 130px,
@@ -75,6 +71,21 @@ span.colour, .underHeading span, .colSave{
     40px 140px, 40px 130px, 30px 130px, 30px 110px, 20px 110px,
     20px 80px, 30px 80px, 30px 60px, 40px 60px, 40px 40px, 50px 40px,
     50px 30px, 70px 30px, 70px 20px) !important;
+}
+
+.loveHeart {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 55px;
+  height: 50px;
+  background-image: url(images/love_heart.png);
+  background-size: 55px 50px;
+}
+
+.petBack {
+  background-image: none;
+  background-color: #ffd400;
 }
 
 .petColour .colSave {
@@ -140,13 +151,29 @@ span.colour, .underHeading span, .colSave{
 .controlsRight .colour {
   font-family: 'Luckiest Guy';
   text-decoration: none;
-  margin: 20px;
-  padding: 20px;
-  height: 70px;
+  margin: 15px;
+  padding: 0 15px;
+  height: 60px;
   background-color: #c1bfbf;
   border: 4px solid black;
   color: black;
   position: fixed;
   top: 0;
   right: 0;
+}
+
+.loveHeart.pulse {
+  animation-name: pulse;
+  animation-duration: 0.5s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.3);
+  }
 }
