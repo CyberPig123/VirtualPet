@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   if (window.config.canNotify) {
     setInterval(() => {
       var num = Math.floor(Math.random() * 200) + 1
+      console.log(num)
       if (num === 200) {
         var not = new Notification('Your pet misses you!', {
           body: 'Come and see ' + localStorage.getItem('petName') + ' now!',
