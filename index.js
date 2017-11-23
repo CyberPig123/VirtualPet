@@ -27,12 +27,12 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     console.log('Can not notify, browser unsupported');
   } else if (Notification.permission == 'denied'){
     console.log('Can not notify, user denies')
-  } else if (Notification.permision == 'granted'){
-    window.config.canNotify = true
-  } else {
+  } else if (Notification.permision == 'default'){
     Notification.requestPermission(function (permission) {
       window.location.reload()
     });
+  } else {
+    window.config.canNotify = true
   }
 
   if (window.config.canNotify) {
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
       heart.style.display = 'none'
       pet.style.backgroundImage = 'url(images/egg_happy_tr.png)'
       heart.setAttribute('class', 'loveHeart')
-    }, 1500)
+    }, 3000)
     heart.style.display = 'block'
     heart.style.left = Number(window.config.petX.replace('px', '')) + 52.5
     heart.style.bottom = '240px'
