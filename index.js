@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
 
   if (!('Notification' in window)) {
     console.log('Can not notify, browser unsupported');
-  } else if (Notification.permission !== 'denied'){
+  } else if (Notification.permission == 'denied'){
     console.log('Can not notify, user denies')
   } else if (Notification.permision == 'granted'){
     window.config.canNotify = true
