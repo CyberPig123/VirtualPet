@@ -23,31 +23,6 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   pet.style.transform = 'translateX(' + window.config.petX + 'px) translateY(' + window.config.petY + 'px)'
   petBack.style.transform = 'translateX(' + window.config.petX + 'px) translateY(' + window.config.petY + 'px)'
 
-  if (!('Notification' in window)) {
-    console.log('Can not notify, browser unsupported');
-  } else if (Notification.permission == 'denied'){
-    console.log('Can not notify, user denies')
-  } else if (Notification.permision == 'default'){
-    Notification.requestPermission(function (permission) {
-      window.location.reload()
-    });
-  } else {
-    window.config.canNotify = true
-  }
-
-  if (window.config.canNotify) {
-    setInterval(() => {
-      var num = Math.floor(Math.random() * 200) + 1
-      console.log(num)
-      if (num === 200) {
-        var not = new Notification('Your pet misses you!', {
-          body: 'Come and see ' + localStorage.getItem('petName') + ' now!',
-          icon: 'images/egg_happy_256.png'
-        });
-      }
-    }, 1000)
-  }
-
   setTimeout(() => {
     pet.style.transition = 'transform 2.5s'
     petBack.style.transition = 'transform 2.5s'
