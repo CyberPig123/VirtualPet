@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   var changeColour = document.querySelector('.colour')
   var colPanel = document.querySelector('.petColour')
   var heart = document.querySelector('.loveHeart')
+  var expBar = document.querySelector('.expBar')
+  var expLevel = document.querySelector('.expLevel')
 
   window.config = {
     canMove: true,
@@ -36,6 +38,14 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   saveNameLink.style.display = 'none'
   name.innerText = localStorage.getItem('petName')
 
+  if (localStorage.getItem('expLevel') === null) {
+    localStorage.setItem('expLevel', 0)
+    localStorage.setItem('expContent', 0)
+  }
+
+  expBar.style.backgroundImage = 'url(images/exp_bar' + localStorage.getItem('expContent') + '.png)'
+  expLevel.innerText = localStorage.getItem('expLevel')
+
   // show the pet's name in the document's title
   document.title = localStorage.getItem('petName') + ' - VirtualPet'
 
@@ -45,6 +55,26 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   }
 
   petBack.style.backgroundColor = localStorage.getItem('petColour')
+
+  window.expAdd = function(num) {
+    expcontent = Number(localStorage.getItem('expContent')) + num
+    explevel = Number(localStorage.getItem('expLevel'))
+
+    if (expcontent > 14) {
+      expcontent = expcontent - 14
+      explevel++
+    }
+
+    localStorage.setItem('expContent', expcontent)
+    localStorage.setItem('expLevel', explevel)
+    expBar.style.backgroundImage = 'url(images/exp_bar' + localStorage.getItem('expContent') + '.png)'
+    expLevel.innerText = localStorage.getItem('expLevel')
+
+    expBar.setAttribute('class', 'expBar pulse')
+    setTimeout(() => {
+      expBar.setAttribute('class', 'expBar')
+    }, 600)
+  }
 
   // when 'Edit Name' is clicked
   editNameLink.addEventListener('click', (ev) => {
@@ -111,6 +141,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
 
   function heartPulse() {
     setTimeout(() => {
+      expAdd(1)
       window.config.canMove = true
       window.config.canPat = true
       heart.style.display = 'none'

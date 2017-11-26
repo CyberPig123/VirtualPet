@@ -6,8 +6,8 @@
 
     <title>VirtualPet</title>
 
-    <meta name="theme-color" content="#94dff8">
-    <meta name="mobile-web-app-capable" content="yes">
+    <meta name='theme-color' content='#94dff8'>
+    <meta name='mobile-web-app-capable' content='yes'>
 
     <link rel='stylesheet' href='index.css'>
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Luckiest+Guy|Roboto'>
@@ -18,11 +18,11 @@
     <link rel='preload' href='images/egg_sleep_tr.png' as='image'>
     <link rel='preload' href='images/floor.png' as='image'>
 
-    <link rel="icon" type="image/png" sizes="16x16" href="images/egg_happy.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/egg_happy_32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="images/egg_happy_96.png">
-    <link rel="icon" type="image/png" sizes="256x256" href="images/egg_happy_256.png">
-    <link rel="apple-touch-icon" href="/images/egg_happy_256.png">
+    <link rel='icon' type='image/png' sizes='16x16' href='images/egg_happy.png'>
+    <link rel='icon' type='image/png' sizes='32x32' href='images/egg_happy_32.png'>
+    <link rel='icon' type='image/png' sizes='96x96' href='images/egg_happy_96.png'>
+    <link rel='icon' type='image/png' sizes='256x256' href='images/egg_happy_256.png'>
+    <link rel='apple-touch-icon' href='/images/egg_happy_256.png'>
 
     <script src='index.js'></script>
   </head>
@@ -36,12 +36,17 @@
       <input type='range' class='colSlider' min='-360' max='0'>
       <span class='colSave'>Save Color</span>
     </div>
-    <div class="controlsRight">
+    <div class='controlsRight'>
+      <div class='exp'>
+        <div class='expBar'></div>
+        <div class='expLabel'>EXP</div>
+        <div class='expLevel'>0</div>
+      </div>
       <button class='colour'>Pet Colour</button>
     </div>
     <div class='belowFloor'></div>
     <div class='petWrapper'>
-      <div class="loveHeart"></div>
+      <div class='loveHeart'></div>
       <div class='petBack'></div>
       <div class='pet'></div>
     </div>
