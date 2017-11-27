@@ -21,6 +21,19 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     petY: '-85'
   }
 
+  for (var i = 0; i < 15; i++) {
+    var el = document.createElement('div')
+    el.style.backgroundImage = 'url(images/exp_bar' + i + '.png)'
+    document.querySelector('.offScreen').appendChild(el)
+  }
+
+  var img = ['egg_happy_tr', 'egg_sad_tr', 'egg_laugh_tr', 'egg_sleep_tr']
+  for (var i = 0; i < img.length; i++) {
+    var el = document.createElement('div')
+    el.style.backgroundImage = 'url(images/' + img[i] + '.png)'
+    document.querySelector('.offScreen').appendChild(el)
+  }
+
   widthCentre = innerWidth / 2
   pet.style.transform = 'translateX(' + window.config.petX + 'px) translateY(' + window.config.petY + 'px)'
   petBack.style.transform = 'translateX(' + window.config.petX + 'px) translateY(' + window.config.petY + 'px)'
@@ -46,6 +59,10 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   expBar.style.backgroundImage = 'url(images/exp_bar' + localStorage.getItem('expContent') + '.png)'
   expLevel.innerText = localStorage.getItem('expLevel')
 
+  if (Number(localStorage.getItem('expLevel')) >= 9) {
+    expLevel.setAttribute('class', 'expLevel twodig')
+  }
+
   // show the pet's name in the document's title
   document.title = localStorage.getItem('petName') + ' - VirtualPet'
 
@@ -60,7 +77,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     expcontent = Number(localStorage.getItem('expContent')) + num
     explevel = Number(localStorage.getItem('expLevel'))
 
-    if (expcontent > 14) {
+    if (expcontent > 13) {
       expcontent = expcontent - 14
       explevel++
     }
@@ -70,9 +87,13 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     expBar.style.backgroundImage = 'url(images/exp_bar' + localStorage.getItem('expContent') + '.png)'
     expLevel.innerText = localStorage.getItem('expLevel')
 
-    expBar.setAttribute('class', 'expBar pulse')
+    if (Number(localStorage.getItem('expLevel')) >= 9) {
+      expLevel.classList.add('twodig')
+    }
+
+    expBar.classList.add('pulse')
     setTimeout(() => {
-      expBar.setAttribute('class', 'expBar')
+      expBar.classList.remove('pulse')
     }, 600)
   }
 
