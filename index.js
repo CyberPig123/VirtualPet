@@ -21,6 +21,12 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     petY: '-85'
   }
 
+  localStorage.setItem('timeWasted', localStorage.getItem('timeWasted') || 0)
+  
+  setInterval(() => {
+    localStorage.setItem('timeWasted', Number(localStorage.getItem('timeWasted')) + 10)
+  }, 10000)
+
   for (var i = 0; i < 15; i++) {
     var el = document.createElement('div')
     el.style.backgroundImage = 'url(images/exp_bar' + i + '.png)'
