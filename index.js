@@ -22,9 +22,13 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   }
 
   localStorage.setItem('timeWasted', localStorage.getItem('timeWasted') || 0)
+  localStorage.setItem('focusedTimeWasted', localStorage.getItem('focusedTimeWasted') || 0)
   
   setInterval(() => {
     localStorage.setItem('timeWasted', Number(localStorage.getItem('timeWasted')) + 10)
+    if (!document.hidden) {
+      localStorage.setItem('focusedTimeWasted', Number(localStorage.getItem('focusedTimeWasted')) + 10)
+    }
   }, 10000)
 
   for (var i = 0; i < 15; i++) {
