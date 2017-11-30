@@ -198,4 +198,17 @@ document.addEventListener('DOMContentLoaded', (ev) => {
       heartPulse()
     }
   })
+  
+  key('space', () => {
+    if (!window.config.canPat) {
+      return
+    }
+    window.config.canMove = false
+    window.config.canPat = false
+    if (window.config.isMoving) {
+      setTimeout(heartPulse, 2300)
+    } else {
+      heartPulse()
+    }
+  })
 })
