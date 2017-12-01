@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     petY: '-85'
   }
   
-  key.filter = () => {
+  key.filter = function() {
     var tagName = (event.target || event.srcElement).tagName;
     return !(tagName == 'SELECT' || tagName == 'TEXTAREA');
   }
