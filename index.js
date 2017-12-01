@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     colPanel.style.bottom = '0'
   })
 
-  function saveColour {
+  function saveColour() {
     setTimeout(() => {
       config.canMove = true
     }, 500)
