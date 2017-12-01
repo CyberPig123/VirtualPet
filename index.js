@@ -130,14 +130,20 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     colPreview.style.backgroundColor = 'hsl(' + hue + ', 85%, 50%)'
   })
 
+  key(',', () => {
+    config.canMove = false
+    colPanel.style.bottom = '0'
+  })
+  
+  key('.', saveColour)
+
   // when 'Pet Colour' is clicked
   changeColour.addEventListener('click', (ev) => {
     config.canMove = false
     colPanel.style.bottom = '0'
   })
 
-  // when 'Save Colour' is clicked
-  colSave.addEventListener('click', (ev) => {
+  function saveColour {
     setTimeout(() => {
       config.canMove = true
     }, 500)
@@ -145,7 +151,10 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     hue = -1 * colSlider.value
     localStorage.setItem('petColour', 'hsl(' + hue + ', 85%, 50%)')
     petBack.style.backgroundColor = 'hsl(' + hue + ', 85%, 50%)'
-  })
+  }
+  
+  // when 'Save Colour' is clicked
+  colSave.addEventListener('click', saveColour)
 
   // clicking to move the pet
   document.body.addEventListener('click', (ev) => {
