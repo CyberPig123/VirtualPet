@@ -20,6 +20,11 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     petX: String(innerWidth / 2 - 80),
     petY: '-85'
   }
+  
+  key.filter = () => {
+    var tagName = (event.target || event.srcElement).tagName;
+    return !(tagName == 'SELECT' || tagName == 'TEXTAREA');
+  }
 
   localStorage.setItem('timeWasted', localStorage.getItem('timeWasted') || 0)
   localStorage.setItem('focusedTimeWasted', localStorage.getItem('focusedTimeWasted') || 0)
