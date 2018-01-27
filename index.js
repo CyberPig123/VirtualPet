@@ -17,10 +17,11 @@ document.addEventListener('DOMContentLoaded', (ev) => {
   window.config = {
     canMove: true,
     canPat: true,
+    canFeed: true,
     petX: String(innerWidth / 2 - 80),
     petY: '-85'
   }
-  
+
   key.filter = function(event) {
     var tagName = (event.target || event.srcElement).tagName;
     return !(tagName == 'SELECT' || tagName == 'TEXTAREA');
@@ -28,7 +29,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
 
   localStorage.setItem('timeWasted', localStorage.getItem('timeWasted') || 0)
   localStorage.setItem('focusedTimeWasted', localStorage.getItem('focusedTimeWasted') || 0)
-  
+
   setInterval(() => {
     localStorage.setItem('timeWasted', Number(localStorage.getItem('timeWasted')) + 10)
     if (!document.hidden) {
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     document.querySelector('.offScreen').appendChild(el)
   }
 
-  var img = ['egg_happy_tr', 'egg_sad_tr', 'egg_laugh_tr', 'egg_sleep_tr']
+  var img = ['egg_happy_tr', 'egg_sad_tr', 'egg_laugh_tr', 'egg_sleep_tr', 'egg_apple_food_half_eaten', 'egg_cake_food_half_eaten', 'egg_cat_food_half_eaten']
   for (var i = 0; i < img.length; i++) {
     var el = document.createElement('div')
     el.style.backgroundImage = 'url(images/' + img[i] + '.png)'
@@ -70,6 +71,17 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     localStorage.setItem('expLevel', 0)
     localStorage.setItem('expContent', 0)
   }
+
+  function checkFoodsUnlocked() {
+    if (Number(localStorage.getItem('expLevel')) > 9) {
+      document.querySelector('.food2').classList.remove('hidden')
+    }
+    if (Number(localStorage.getItem('expLevel')) > 39) {
+      document.querySelector('.food3').classList.remove('hidden')
+    }
+  }
+
+  checkFoodsUnlocked()
 
   expBar.style.backgroundImage = 'url(images/exp_bar' + localStorage.getItem('expContent') + '.png)'
   expLevel.innerText = localStorage.getItem('expLevel')
@@ -110,6 +122,8 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     setTimeout(() => {
       expBar.classList.remove('pulse')
     }, 600)
+
+    checkFoodsUnlocked()
   }
 
   // when 'Edit Name' is clicked
@@ -139,7 +153,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     config.canMove = false
     colPanel.style.bottom = '0'
   })
-  
+
   key('.', saveColour)
 
   // when 'Pet Colour' is clicked
@@ -157,7 +171,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     localStorage.setItem('petColour', 'hsl(' + hue + ', 85%, 50%)')
     petBack.style.backgroundColor = 'hsl(' + hue + ', 85%, 50%)'
   }
-  
+
   // when 'Save Colour' is clicked
   colSave.addEventListener('click', saveColour)
 
@@ -189,6 +203,7 @@ document.addEventListener('DOMContentLoaded', (ev) => {
       expAdd(1)
       window.config.canMove = true
       window.config.canPat = true
+      window.config.canFeed = true
       heart.style.display = 'none'
       pet.style.backgroundImage = 'url(images/egg_happy_tr.png)'
       heart.setAttribute('class', 'loveHeart')
@@ -206,23 +221,71 @@ document.addEventListener('DOMContentLoaded', (ev) => {
     }
     window.config.canMove = false
     window.config.canPat = false
+    window.config.canFeed = false
     if (window.config.isMoving) {
       setTimeout(heartPulse, 2300)
     } else {
       heartPulse()
     }
   })
-  
+
   key('space', () => {
     if (!window.config.canPat) {
       return
     }
     window.config.canMove = false
     window.config.canPat = false
+    window.config.canFeed = false
     if (window.config.isMoving) {
       setTimeout(heartPulse, 2300)
     } else {
       heartPulse()
     }
+  })
+
+  // foods
+
+  document.querySelector('.food1').addEventListener('click', () => {
+    food = document.querySelector('.foodFood')
+    food.style.display = 'block'
+
+    if (!window.config.canFeed || window.config.isMoving) return
+    window.config.canPat = false
+    window.config.canMove = false
+    window.config.canFeed = false
+
+    let foodX = Math.floor(Math.random() * window.innerWidth)
+
+    food.style.left = (foodX - 80) + 'px'
+    food.style.transition = 'none'
+    food.style.transform = 'translateY(-' + (window.innerHeight - 175) + 'px)'
+
+    setTimeout(() => {
+      food.style.transition = 'transform 2s'
+      food.style.transform = 'none'
+      setTimeout(() => {
+        food.style.transition = 'none'
+        setTimeout(() => {
+          food.classList.add('half')
+          setTimeout(() => {
+            food.classList.remove('half')
+            food.classList.add('gone')
+            setTimeout(() => {
+              expAdd(1)
+              food.classList.remove('gone')
+              food.style.left = '-200px'
+              window.config.canPat = true
+              window.config.canMove = true
+              window.config.canFeed = true
+            }, 500)
+          }, 1000)
+        }, 1000)
+      }, 2000)
+    }, 500)
+
+    window.config.petX = foodX - 80
+
+    pet.style.transform = 'translateX(' + window.config.petX + 'px) translateY(' + window.config.petY + 'px)'
+    petBack.style.transform = 'translateX(' + window.config.petX + 'px) translateY(' + window.config.petY + 'px)'
   })
 })

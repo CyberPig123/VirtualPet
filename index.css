@@ -215,6 +215,72 @@ button.colour, .underHeading span, .colSave{
   top: 150vw;
 }
 
+.foodButtons {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 15px;
+}
+
+.foodButtons div {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  background-color: #c3c3c3;
+  background-size: 80px 80px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.foodButtons div:not(.hidden) {
+  border: 5px solid #585858;
+  background-position: -5px -5px;
+}
+
+.foodButtons .hidden {
+  background-image: url('images/egg_food_blanked.png');
+  cursor: not-allowed;
+}
+
+.food1:not(.hidden) {
+  background-image: url('images/egg_cat_food.png');
+}
+
+.food2:not(.hidden) {
+  background-image: url('images/egg_apple_food.png');
+  background-size: 55px;
+  background-repeat: no-repeat;
+  background-position: center !important;
+}
+
+.food3:not(.hidden) {
+  background-image: url('images/egg_cake_food.png');
+  background-size: 55px;
+  background-repeat: no-repeat;
+  background-position: center !important;
+}
+
+.foodFood {
+  position: absolute;
+  bottom: 55px;
+  left: 0;
+  width: 160px;
+  height: 160px;
+  background-image: url('images/egg_cat_food.png');
+  background-size: 160px;
+  display: none;
+  transition: transform 2s;
+  /* transition-timing-function: cubic-bezier(0,0,1,1) !important; */
+}
+
+.foodFood.half {
+  background-image: url('images/egg_cat_food_half_eaten.png');
+}
+
+.foodFood.gone {
+  background-image: none;
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);
